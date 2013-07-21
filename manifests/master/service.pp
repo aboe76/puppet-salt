@@ -9,7 +9,7 @@ salt::master {
   }
 
   if $master_service_manage == true {
-    service { "$master_service_name":
+    service { $master_service_name:
       ensure     => $master_service_ensure,
       enable     => $master_service_enable,
       name       => $master_service_name,

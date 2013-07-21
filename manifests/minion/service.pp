@@ -9,7 +9,7 @@ salt::minion {
   }
 
   if $minion_service_manage == true {
-    service { "$minion_service_name":
+    service { $minion_service_name:
       ensure     => $minion_service_ensure,
       enable     => $minion_service_enable,
       name       => $minion_service_name,
