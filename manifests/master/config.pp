@@ -8,7 +8,10 @@ class salt::master::config (
     owner => 0,
     group => 0,
     mode  => '0664',
-    content => template($master_template)
+    content => template($master_template),
+    replace => false,
   }
+
+# todo parameterize configuration files
 
 }

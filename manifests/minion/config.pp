@@ -8,7 +8,10 @@ class salt::minion::config (
     owner => 0,
     group => 0,
     mode  => '0664',
-    content => template($minion_template)
+    content => template($minion_template),
+    replace => false,
   }
+
+# todo parameterize configuration files
 
 }
