@@ -1,5 +1,6 @@
 #puppet-salt
 
+[![Build Status](https://secure.travis-ci.org/aboe76/puppet-salt.png?branch=master)](http://travis-ci.org/aboe76/puppet-salt)
 
 
 ####Table of Contents
