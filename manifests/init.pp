@@ -1,4 +1,4 @@
 class salt {
-  include salt::master
-  include salt::minion
+  include 'salt::master'
+  include 'salt::minion'
 }

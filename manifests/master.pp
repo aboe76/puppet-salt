@@ -7,9 +7,9 @@ class salt::master (
   $master_service_enable = $salt::params::master_service_enable,
   $master_service_manage = $salt::params::master_service_manage,
   $master_service_name = $salt::params::master_service_name,) inherits salt::params {
-  include '::salt::master::install'
-  include '::salt::master::config'
-  include '::salt::master::service'
+  include 'salt::master::install'
+  include 'salt::master::config'
+  include 'salt::master::service'
 
   # Anchor this as per #8140 - this ensures that classes won't float off and
   # mess everything up.  You can read about this at:
@@ -18,7 +18,7 @@ class salt::master (
 
   anchor { 'salt::master::end': }
 
-  Anchor['salt::master::begin'] -> Class['::salt::master:install'] -> Class['::salt::master:config'
+  Anchor['salt::master::begin'] -> Class['::salt::master::install'] -> Class['::salt::master::config'
     ] ~> Class['::salt::master::service'] -> Anchor['salt::master::end']
 
 }
