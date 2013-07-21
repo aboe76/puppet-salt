@@ -8,7 +8,6 @@ class salt::params {
   $minion_service_manage = true
   $minion_service_enable = true
 
-
   $master_config = '/etc/salt/master'
   $master_config_template = 'salt/master.erb'
   $master_package_name = 'salt-master'

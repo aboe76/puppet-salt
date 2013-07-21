@@ -1,12 +1,13 @@
 class salt::minion (
-  $minion_config  = $salt::params::minion_config,
-  $minion_config_template  = $salt::params::minion_config_template,
-  $minion_package_ensure = $salt::params::minion_package_ensure,
-  $minion_package_name   = $salt::params::minion_package_name,
-  $minion_service_ensure = $salt::params::minion_service_ensure,
-  $minion_service_enable = $salt::params::minion_service_enable,
-  $minion_service_manage = $salt::params::minion_service_manage,
-  $minion_service_name = $salt::params::minion_service_name,) inherits salt::params {
+  $minion_config          = $salt::params::minion_config,
+  $minion_config_template = $salt::params::minion_config_template,
+  $minion_package_ensure  = $salt::params::minion_package_ensure,
+  $minion_package_name    = $salt::params::minion_package_name,
+  $minion_service_ensure  = $salt::params::minion_service_ensure,
+  $minion_service_enable  = $salt::params::minion_service_enable,
+  $minion_service_manage  = $salt::params::minion_service_manage,
+  $minion_service_name    = $salt::params::minion_service_name,) inherits
+salt::params {
   include 'salt::minion::install'
   include 'salt::minion::config'
   include 'salt::minion::service'
