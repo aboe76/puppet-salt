@@ -16,16 +16,9 @@
 5. [Limitations - OS compatibility, etc.](#limitations)
 
 
-# salt Puppet Module Arch Linux
+# salt Puppet Module
 
 Manage salt client and server via Puppet.
-
-```
-include salt
-```
-
-Will install Both client and server.
-
 
 
 ##Module Description
@@ -43,12 +36,17 @@ both on one machine.
  
 ###Beginning with salt
 
-include '::salt' is all you need to get it running.
-Or put this in your manifest:
-
+Just add manifest:
 
 ```puppet
-class { '::salt':}
+include salt
+```
+
+Or if you want to change params you need to include the underlying modules:
+
+```puppet
+class { 'salt::minion': minion_package_name => 'salt-minion-git', }
+class { 'salt::master': master_package_name => 'salt-master-git', }
 ```
 
 ##Usage
@@ -84,23 +82,16 @@ include '::salt'
  * salt::master: Handles the master
  * salt::params: all parameters needed for the rest.
 
-###Parameters
+###Parameters salt::minion
 
-The following parameters are available in the chrony module
+Here are just a few parameters that are available in the salt::minion module
+The rest you can look up in salt::params
 
 ####`minion_config`
 
 This sets the file to write minion configuration into.
 
-####`master_config`
-
-This sets the file to write salt master configuration into.
-
 ####`minion_package_name`
-
-This determines the name of the package to install.
-
-####`master_package_name`
 
 This determines the name of the package to install.
 
@@ -108,9 +99,23 @@ This determines the name of the package to install.
 
 This selects the name of the salt minion service for puppet to manage.
 
+###Parameters salt::master
+
+Here are just a few parameters that are available in the salt::master module
+The rest you can look up in salt::params
+
 ####`master_service_name`
 
 This selects the name of the salt minion service for puppet to manage.
+
+####`master_package_name`
+
+This determines the name of the package to install.
+
+####`master_config`
+
+This sets the file to write salt master configuration into.
+
 
 ##Limitations
 
