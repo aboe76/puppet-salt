@@ -11,19 +11,19 @@
 #default_include: master.d/*.conf
 
 # The address of the interface to bind to
-#interface: 0.0.0.0
+interface: <%= @master_interface %>
 
 # Whether the master should listen for IPv6 connections. If this is set to True,
 # the interface option must be adjusted too (for example: "interface: '::'")
-#ipv6: False
+ipv6: <%= @master_ipv6 %>
 
 # The tcp port used by the publisher
-#publish_port: 4505
+publish_port: <%= @master_publish_port %>
 
 # The user to run the salt-master as. Salt will update all permissions to
 # allow the specified user to run the master. If the modified files cause
 # conflicts set verify_env to False.
-#user: root
+user: <%= @master_user %>
 
 # Max open files
 # Each minion connecting to the master uses AT LEAST one file descriptor, the
@@ -41,64 +41,64 @@
 # a good way to find the limit is to search the internet for(for example):
 #   raise max open files hard limit debian
 #
-#max_open_files: 100000
+max_open_files: <%= @master_max_open_files %>
 
 # The number of worker threads to start, these threads are used to manage
 # return calls made from minions to the master, if the master seems to be
 # running slowly, increase the number of threads
-#worker_threads: 5
+worker_threads: <%= @master_worker_threads %>
 
 # The port used by the communication interface. The ret (return) port is the
 # interface used for the file server, authentication, job returnes, etc.
-#ret_port: 4506
+ret_port: <%= @master_ret_port %>
 
 # Specify the location of the daemon process ID file
-#pidfile: /var/run/salt-master.pid
+pidfile: <%= @master_pid_file %>
 
 # The root directory prepended to these options: pki_dir, cachedir,
 # sock_dir, log_file, autosign_file, extension_modules, key_logfile, pidfile.
-#root_dir: /
+root_dir: <%= @master_root_dir %>
 
 # Directory used to store public key data
-#pki_dir: /etc/salt/pki/master
+pki_dir: <%= @master_pki_dir %>
 
 # Directory to store job and cache data
-#cachedir: /var/cache/salt/master
+cachedir: <%= @master_cachedir %>
 
 # Verify and set permissions on configuration directories at startup
-#verify_env: True
+verify_env: <%= @master_verify_env %>
 
 # Set the number of hours to keep old job information in the job cache
-#keep_jobs: 24
+keep_jobs: <%= @master_keep_jobs %>
 
 # Set the default timeout for the salt command and api, the default is 5
 # seconds
-#timeout: 5
+timeout: <%= @master_timeout %>
 
 # The loop_interval option controls the seconds for the master's maintinance
 # process check cycle. This process updates file server backends, cleans the
 # job cache and executes the scheduler.
-#loop_interval: 60
+loop_interval: <%= @master_loop_interval %>
 
 # Set the default outputter used by the salt command. The default is "nested"
-#output: nested
+output: <%= @master_output %>
 
 # By default output is colored, to disable colored output set the color value
 # to False
-#color: True
+color: <%= @master_color %>
 
 # Set the directory used to hold unix sockets
-#sock_dir: /var/run/salt/master
+sock_dir: <%= @master_sock_dir %>
 
 # The master maintains a job cache, while this is a great addition it can be
 # a burden on the master for larger deployments (over 5000 minions).
 # Disabling the job cache will make previously executed jobs unavailable to
 # the jobs system and is not generally recommended.
 #
-#job_cache: True
+job_cache: <%= @master_job_cache %>
 
 # Cache minion grains and pillar data in the cachedir.
-#minion_data_cache: True
+minion_data_cache: <%= @master_minion_data_cache %>
 
 # The master can include configuration from other files. To enable this,
 # pass a list of paths to this option. The paths can be either relative or
@@ -122,16 +122,16 @@
 # authentication, this is only intended for highly secure environments or for
 # the situation where your keys end up in a bad state. If you run in open mode
 # you do so at your own risk!
-#open_mode: False
+open_mode: <%= @master_open_mode %>
 
 # Enable auto_accept, this setting will automatically accept all incoming
 # public keys from the minions. Note that this is insecure.
-#auto_accept: False
+auto_accept: <%= @master_auto_accept %>
 
 # If the autosign_file is specified only incoming keys specified in
 # the autosign_file will be automatically accepted. This is insecure.
 # Regular expressions as well as globing lines are supported.
-#autosign_file: /etc/salt/autosign.conf
+autosign_file: <%= @master_autosign_file %>
 
 # Enable permissive access to the salt keys.  This allows you to run the
 # master or minion as root, but have a non-root group be given access to
@@ -139,7 +139,7 @@
 # you've given access to.  This is potentially quite insecure.
 # If an autosign_file is specified, enabling permissive_pki_access will allow group access
 # to that specific file.
-#permissive_pki_access: False
+permissive_pki_access: <%= @master_permissive_pki_access %>
 
 # Allow users on the master access to execute specific commands on minions.
 # This setting should be treated with care since it opens up execution
@@ -186,7 +186,7 @@
 #runner_dirs: []
 
 # Enable Cython for master side modules
-#cython_enable: False
+cython_enable: <%= @master_cython_enable %>
 
 
 #####      State System settings     #####
@@ -194,7 +194,7 @@
 # The state system uses a "top" file to tell the minions what environment to
 # use and what modules to use. The state_top file is defined relative to the
 # root of the base environment as defined in "File Server settings" below.
-#state_top: top.sls
+state_top: <%= @master_state_top %>
 
 # The master_tops option replaces the external_nodes option by creating
 # a plugable system for the generation of external top data. The external_nodes
@@ -210,26 +210,26 @@
 # placed in a top file. The external_nodes option is the executable that will
 # return the ENC data. Remember that Salt will look for external nodes AND top
 # files and combine the results if both are enabled!
-#external_nodes: None
+external_nodes: <%= @master_external_nodes %>
 
 # The renderer to use on the minions to render the state data
-#renderer: yaml_jinja
+renderer: <%= @master_renderer %>
 
 # The failhard option tells the minions to stop immediately after the first
 # failure detected in the state execution, defaults to False
-#failhard: False
+failhard: <%= @master_failhard %>
 
 # The state_verbose and state_output settings can be used to change the way
 # state system data is printed to the display. By default all data is printed.
 # The state_verbose setting can be set to True or False, when set to False
 # all data that has a result of True and no changes will be suppressed.
-#state_verbose: True
+state_verbose: <%= @master_state_verbose %>
 
 # The state_output setting changes if the output is the full multi line
 # output for each changed state if set to 'full', but if set to 'terse'
 # the output will be shortened to a single line.  If set to 'mixed', the output
 # will be terse unless a state failed, in which case that output will be full.
-#state_output: full
+state_output: <%= @master_state_output %>
 
 
 #####      File Server settings      #####
@@ -260,10 +260,10 @@
 # The hash_type is the hash to use when discovering the hash of a file on
 # the master server, the default is md5, but sha1, sha224, sha256, sha384
 # and sha512 are also supported.
-#hash_type: md5
+hash_type: <%= @master_hash_type %>
 
 # The buffer size in the file server can be adjusted here:
-#file_buffer_size: 1048576
+file_buffer_size: <%= @master_file_buffer_size %>
 
 # A regular expression (or a list of expressions) that will be matched
 # against the file path before syncing the modules and states to the minions.
@@ -412,16 +412,16 @@
 #log_file: file:///dev/log
 #log_file: udp://loghost:10514
 
-#log_file: /var/log/salt/master
-#key_logfile: /var/log/salt/key
+log_file: <%= @master_log_file %>
+key_logfile: <%= @master_key_logfile %>
 
 # The level of messages to send to the console.
 # One of 'garbage', 'trace', 'debug', info', 'warning', 'error', 'critical'.
-#log_level: warning
+log_level: <%= @master_log_level %>
 
 # The level of messages to send to the log file.
 # One of 'garbage', 'trace', 'debug', info', 'warning', 'error', 'critical'.
-#log_level_logfile: warning
+log_level_logfile: <%= @master_log_level_logfile %>
 
 # The date and time format used in log messages. Allowed date/time formating
 # can be seen here: http://docs.python.org/library/time.html#time.strftime

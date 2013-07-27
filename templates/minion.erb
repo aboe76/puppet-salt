@@ -8,43 +8,47 @@
 
 # Set the location of the salt master server, if the master server cannot be
 # resolved, then the minion will fail to start.
-#master: salt
+master: <%= @minion_master %>
 
 # Set whether the minion should connect to the master via IPv6
-#ipv6: False
+ipv6: <%= @minion_ipv6 %>
 
 # Set the number of seconds to wait before attempting to resolve
 # the master hostname if name resolution fails. Defaults to 30 seconds.
 # Set to zero if the minion should shutdown and not retry.
-# retry_dns: 30
+retry_dns: <%= @minion_retry_dns %>
 
 # Set the port used by the master reply and authentication server
-#master_port: 4506
+master_port: <%= @minion_master_port %>
 
 # The user to run salt
-#user: root
+user: <%= @minion_user %>
 
 # Specify the location of the daemon process ID file
-#pidfile: /var/run/salt-minion.pid
+pidfile: <%= @minion_pidfile %>
 
 # The root directory prepended to these options: pki_dir, cachedir, log_file,
 # sock_dir, pidfile.
 #root_dir: /
 
 # The directory to store the pki information in
-#pki_dir: /etc/salt/pki/minion
+pki_dir: <%= @minion_pki_dir %>
 
 # Explicitly declare the id for this minion to use, if left commented the id
 # will be the hostname as returned by the python call: socket.getfqdn()
 # Since salt uses detached ids it is possible to run multiple minions on the
 # same machine but with different ids, this can be useful for salt compute
 # clusters.
-#id:
+<% if @minion_id %>
+id: <%= @minion_id %>
+<% end %>
 
 # Append a domain to a hostname in the event that it does not exist.  This is
 # useful for systems where socket.getfqdn() does not actually result in a
 # FQDN (for instance, Solaris).
-#append_domain:
+<% if @minion_append_domain %>
+append_domain: <% @minion_append_domain %>
+<% end %>
 
 # Custom static grains for this minion can be specified here and used in SLS
 # files just like all other grains. This example sets 4 custom grains, with
@@ -58,27 +62,27 @@
 #  cab_u: 14-15
 
 # Where cache data goes
-#cachedir: /var/cache/salt/minion
+cachedir: <% @minion_cachedir %>
 
 # Verify and set permissions on configuration directories at startup
-#verify_env: True
+verify_env: <% @minion_verify_env %>
 
 # The minion can locally cache the return data from jobs sent to it, this
 # can be a good way to keep track of jobs the minion has executed
 # (on the minion side). By default this feature is disabled, to enable
 # set cache_jobs to True
-#cache_jobs: False
+cache_jobs: <% @minion_cache_jobs %>
 
 # set the directory used to hold unix sockets
-#sock_dir: /var/run/salt/minion
+sock_dir: <% @minion_sock_dir %>
 
 # Set the default outputter used by the salt-call command. The default is
 # "nested"
-#output: nested
+output: <% @minion_output %>
 #
 # By default output is colored, to disable colored output set the color value
 # to False
-#color: True
+color: <% @minion_color %>
 
 # Backup files that are replaced by file.managed and file.recurse under
 # 'cachedir'/file_backups relative to their original location and appended
@@ -96,7 +100,7 @@
 # When waiting for a master to accept the minion's public key, salt will
 # continuously attempt to reconnect until successful. This is the time, in
 # seconds, between those reconnection attempts.
-#acceptance_wait_time: 10
+acceptance_wait_time: <% @minion_acceptance_wait_time %>
 
 # When the master-key changes, the minion will try to re-auth itself to
 # receive the new master key. In larger environments this can cause a 
@@ -175,20 +179,20 @@
 # evaluating the scheduler and running cleanup tasks. This defaults to a
 # sane 60 seconds, but if the minion scheduler needs to be evaluated more
 # often lower this value
-#loop_interval: 60
+loop_interval: <% @minion_loop_interval %>
 
 # When healing, a dns_check is run. This is to make sure that the originally
 # resolved dns has not changed. If this is something that does not happen in
 # your environment, set this value to False.
-#dns_check: True
+dns_check: <% @minion_dns_check %>
 
 # Windows platforms lack posix IPC and must rely on slower TCP based inter-
 # process communications. Set ipc_mode to 'tcp' on such systems
-#ipc_mode: ipc
+ipc_mode: <% @minion_ipc_mode %>
 #
 # Overwrite the default tcp ports used by the minion when in tcp mode
-#tcp_pub_port: 4510
-#tcp_pull_port: 4511
+tcp_pub_port: <% @minion_tcp_pub_port %>
+tcp_pull_port: <% @minion_tcp_pull_port %> 
 
 # The minion can include configuration from other files. To enable this,
 # pass a list of paths to this option. The paths can be either relative or
@@ -231,7 +235,7 @@
 #   pkg: yumpkg5
 #
 # Enable Cython modules searching and loading. (Default: False)
-#cython_enable: False
+cython_enable: <% @minion_cython_enable %>
 #
 
 #####    State Management Settings    #####
@@ -248,32 +252,32 @@
 # json_mako
 # json_wempy
 #
-#renderer: yaml_jinja
+renderer: <% @minion_renderer %>
 #
 # The failhard option tells the minions to stop immediately after the first
 # failure detected in the state execution, defaults to False
-#failhard: False
+failhard: <% @minion_failhard %>
 #
 # autoload_dynamic_modules Turns on automatic loading of modules found in the
 # environments on the master. This is turned on by default, to turn of
 # autoloading modules when states run set this value to False
-#autoload_dynamic_modules: True
+autoload_dynamic_modules: <% @minion_autoload_dynamic_modules %>
 #
 # clean_dynamic_modules keeps the dynamic modules on the minion in sync with
 # the dynamic modules on the master, this means that if a dynamic module is
 # not on the master it will be deleted from the minion. By default this is
 # enabled and can be disabled by changing this value to False
-#clean_dynamic_modules: True
+clean_dynamic_modules: <% @minion_clean_dynamic_modules %>
 #
 # Normally the minion is not isolated to any single environment on the master
 # when running states, but the environment can be isolated on the minion side
 # by statically setting it. Remember that the recommended way to manage
 # environments is to isolate via the top file.
-#environment: None
+environment: <% @minion_environment %>
 #
 # If using the local file directory, then the state top file name needs to be
 # defined, by default this is top.sls.
-#state_top: top.sls
+state_top: <% @minion_state_top %>
 #
 # Run states when the minion daemon starts. To enable, set startup_states to:
 # 'highstate' -- Execute state.highstate
@@ -324,7 +328,7 @@
 # The hash_type is the hash to use when discovering the hash of a file in
 # the minion directory, the default is md5, but sha1, sha224, sha256, sha384
 # and sha512 are also supported.
-#hash_type: md5
+hash_type: <% @minion_hash_type %>
 
 # The Salt pillar is searched for locally if file_client is set to local. If
 # this is the case, and pillar data is defined, then the pillar_roots need to
@@ -339,35 +343,35 @@
 # authentication, this is only intended for highly secure environments or for
 # the situation where your keys end up in a bad state. If you run in open mode
 # you do so at your own risk!
-#open_mode: False
+open_mode: <% @minion_open_mode %>
 
 # Enable permissive access to the salt keys.  This allows you to run the
 # master or minion as root, but have a non-root group be given access to
 # your pki_dir.  To make the access explicit, root must belong to the group
 # you've given access to. This is potentially quite insecure.
-#permissive_pki_access: False
+permissive_pki_access: <% @minion_permissive_pki_accesss %>
 
 # The state_verbose and state_output settings can be used to change the way
 # state system data is printed to the display. By default all data is printed.
 # The state_verbose setting can be set to True or False, when set to False
 # all data that has a result of True and no changes will be suppressed.
-#state_verbose: True
+state_verbose: <% @minion_state_verbose %>
 #
 # The state_output setting changes if the output is the full multi line
 # output for each changed state if set to 'full', but if set to 'terse'
 # the output will be shortened to a single line.
-#state_output: full
+state_output: <% @minion_state_output %>
 #
 # Fingerprint of the master public key to double verify the master is valid,
 # the master fingerprint can be found by running "salt-key -F master" on the
 # salt master.
-#master_finger: ''
+master_finger: <% @minion_master_finger %>
 
 ######         Thread settings        #####
 ###########################################
 # Disable multiprocessing support, by default when a minion receives a
 # publication a new process is spawned and the command is executed therein.
-#multiprocessing: True
+multiprocessing: <% @minion_multiprocessing %>
 
 #####         Logging settings       #####
 ##########################################
@@ -380,18 +384,18 @@
 #log_file: file:///dev/log
 #log_file: udp://loghost:10514
 #
-#log_file: /var/log/salt/minion
-#key_logfile: /var/log/salt/key
+log_file: <% @minion_log_file %>
+key_logfile: <% @minion_key_logfile %>
 #
 # The level of messages to send to the console.
 # One of 'garbage', 'trace', 'debug', info', 'warning', 'error', 'critical'.
 # Default: 'warning'
-#log_level: warning
+log_level: <% @minion_log_level %>
 #
 # The level of messages to send to the log file.
 # One of 'garbage', 'trace', 'debug', info', 'warning', 'error', 'critical'.
 # Default: 'warning'
-#log_level_logfile:
+log_level_logfile: <% @minion_log_level_logfile %>
 
 # The date and time format used in log messages. Allowed date/time formating
 # can be seen here: http://docs.python.org/library/time.html#time.strftime
@@ -457,21 +461,21 @@
 #
 # Overall state of TCP Keepalives, enable (1 or True), disable (0 or False)
 # or leave to the OS defaults (-1), on Linux, typically disabled. Default True, enabled.
-#tcp_keepalive: True
+tcp_keepalive: <% @minion_tcp_keepalive %>
 #
 # How long before the first keepalive should be sent in seconds. Default 300
 # to send the first keepalive after 5 minutes, OS default (-1) is typically 7200 seconds
 # on Linux see /proc/sys/net/ipv4/tcp_keepalive_time.
-#tcp_keepalive_idle: 300
+tcp_keepalive_idle: <% @minion_tcp_keepalive_idle %>
 #
 # How many lost probes are needed to consider the connection lost. Default -1
 # to use OS defaults, typically 9 on Linux, see /proc/sys/net/ipv4/tcp_keepalive_probes.
-#tcp_keepalive_cnt: -1
+tcp_keepalive_cnt: <% @minion_tcp_keepalive_cnt %>
 #
 # How often, in seconds, to send keepalives after the first one. Default -1 to
 # use OS defaults, typically 75 seconds on Linux, see
 # /proc/sys/net/ipv4/tcp_keepalive_intvl.
-#tcp_keepalive_intvl: -1
+tcp_keepalive_intvl: <% @minion_tcp_keepalive_intvl %>
 
 
 ######      Windows Software settings ######
