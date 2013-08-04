@@ -22,6 +22,20 @@ describe 'salt' do
       it { should contain_class('salt::minion::install') }
       it { should contain_class('salt::minion::config') }
       it { should contain_class('salt::minion::service') }
+        
+      ##
+      ## salt-master config file
+      ##
+      describe 'config file with default params' do
+        it { should contain_file('/etc/salt/master')}
+      end
+      
+      ##
+      ## salt-minion config file
+      ##
+      describe 'config file with default params' do
+        it { should contain_file('/etc/salt/minion')}
+      end  
 
       ##
       ## salt-master service
@@ -51,7 +65,7 @@ describe 'salt' do
       ##
       it 'installs the salt-master package' do
         should contain_package('salt-master').with(
-        'ensure'   => 'installed',
+        'ensure'   => 'present',
         'name'     => 'salt-master'
         )
       end
@@ -60,7 +74,7 @@ describe 'salt' do
       ##
       it 'installs the salt-minion package' do
         should contain_package('salt-minion').with(
-        'ensure'   => 'installed',
+        'ensure'   => 'present',
         'name'     => 'salt-minion'
         )
       end
