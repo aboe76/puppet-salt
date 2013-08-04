@@ -22,6 +22,18 @@ describe 'salt' do
       it { should contain_class('salt::minion::install') }
       it { should contain_class('salt::minion::config') }
       it { should contain_class('salt::minion::service') }
+        
+      ##
+      ## rabbitmq::service
+      ##
+      describe 'service with default params' do
+        it { should contain_service('salt-master').with(
+          'ensure'     => 'running',
+          'enable'     => 'true',
+          'hasstatus'  => 'true',
+          'hasrestart' => 'true'
+          )}
+          end
       end
   end
 end
