@@ -114,5 +114,3 @@ describe 'salt' do
     end
   end
 end
-
-end   
