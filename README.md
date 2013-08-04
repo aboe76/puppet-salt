@@ -120,6 +120,3 @@ This sets the file to write salt master configuration into.
 ##Limitations
 
 This module has been built on and tested against Puppet 3.2.3 and higher.
-
-The module has been tested on:
- * Arch Linux with own build (split packages)
