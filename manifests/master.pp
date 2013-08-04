@@ -1,3 +1,7 @@
+# this class will only install the salt master
+# example:
+# class { 'salt::master': }
+#
 class salt::master (
   $master_config                = $salt::params::master_config,
   $master_config_template       = $salt::params::master_config_template,

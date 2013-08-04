@@ -1,3 +1,7 @@
+# this class will only install the salt minion
+# example:
+# class { 'salt::minion': }
+#
 class salt::minion (
   $minion_config          = $salt::params::minion_config,
   $minion_config_template = $salt::params::minion_config_template,

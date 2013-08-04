@@ -1,3 +1,4 @@
+# This class will set all parameters for salt master/minion
 class salt::params {
   case $::osfamily {
     'redhat'    : {

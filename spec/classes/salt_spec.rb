@@ -129,9 +129,6 @@ describe 'salt' do
           'hasrestart' => 'true'
           )}
       end
-
     end
   end
-
 end
-

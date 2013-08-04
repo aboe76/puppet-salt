@@ -1,3 +1,4 @@
+# this class is used to configure the salt master config file
 class salt::master::config (
   $master_config                = $salt::master::master_config,
   $master_template              = $salt::master::master_config_template,
@@ -44,6 +45,7 @@ class salt::master::config (
   $master_log_level             = $salt::master::master_log_level,
   $master_log_level_logfile     = $salt::master::master_log_level_logfile,) inherits
 salt::master {
+  # installs the master config file defined in salt::params
   file { $master_config:
     ensure  => file,
     owner   => 0,

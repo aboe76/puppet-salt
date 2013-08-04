@@ -1,3 +1,4 @@
+# this class is used to configure the salt minion config file
 class salt::minion::config (
   $minion_config    = $salt::minion::minion_config,
   $minion_template  = $salt::minion::minion_config_template,
@@ -52,6 +53,7 @@ class salt::minion::config (
   $minion_tcp_keepalive_cnt        = $salt::minion::minion_tcp_keepalive_cnt,
   $minion_tcp_keepalive_intvl      = $salt::minion::minion_tcp_keepalive_intvl,)
 inherits salt::minion {
+  # installs the master config file defined in salt::params
   file { $minion_config:
     ensure  => file,
     owner   => 0,
