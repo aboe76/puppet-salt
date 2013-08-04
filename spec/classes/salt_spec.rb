@@ -6,7 +6,7 @@ describe 'salt' do
     let(:facts) {{ :osfamily => 'Unsupported' }}
 
     it 'we fail' do
-      expect { subject }.to raise_error(/not supported on an Unsupported/)
+      expect { subject }.to raise_error(/Unsupported platform: Unsupported/)
     end
   end
 
