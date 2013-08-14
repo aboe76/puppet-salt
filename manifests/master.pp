@@ -52,8 +52,8 @@ class salt::master (
   $master_log_file              = $salt::params::master_log_file,
   $master_key_logfile           = $salt::params::master_key_logfile,
   $master_log_level             = $salt::params::master_log_level,
-  $master_log_level_logfile     = $salt::params::master_log_level_logfile,) inherits
-salt::params {
+  $master_log_level_logfile     = $salt::params::master_log_level_logfile,)
+inherits salt::params {
   include 'salt::master::install'
   include 'salt::master::config'
   include 'salt::master::service'

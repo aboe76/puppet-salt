@@ -43,8 +43,8 @@ class salt::master::config (
   $master_log_file              = $salt::master::master_log_file,
   $master_key_logfile           = $salt::master::master_key_logfile,
   $master_log_level             = $salt::master::master_log_level,
-  $master_log_level_logfile     = $salt::master::master_log_level_logfile,) inherits
-salt::master {
+  $master_log_level_logfile     = $salt::master::master_log_level_logfile,)
+inherits salt::master {
   # installs the master config file defined in salt::params
   file { $master_config:
     ensure  => file,
