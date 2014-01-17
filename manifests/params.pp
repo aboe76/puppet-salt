@@ -148,8 +148,8 @@ class salt::params {
   $minion_pidfile = '/var/run/salt-minion.pid'
   $minion_root_dir = '/'
   $minion_pki_dir = '/etc/salt/pki/minion'
-  $minion_id = ''
-  $minion_append_domain = ''
+  $minion_id = undef
+  $minion_append_domain = undef
   $minion_cachedir = '/var/cache/salt/minion'
   $minion_sock_dir = '/var/run/salt/minion'
   $minion_output = 'nested'
