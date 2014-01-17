@@ -41,6 +41,8 @@ pki_dir: <%= @minion_pki_dir %>
 # clusters.
 <% if @minion_id %>
 id: <%= @minion_id %>
+<% else %>
+#id:
 <% end %>
 
 # Append a domain to a hostname in the event that it does not exist.  This is
@@ -48,6 +50,8 @@ id: <%= @minion_id %>
 # FQDN (for instance, Solaris).
 <% if @minion_append_domain %>
 append_domain: <%= @minion_append_domain %>
+<% else %>
+#append_domain:
 <% end %>
 
 # Custom static grains for this minion can be specified here and used in SLS
