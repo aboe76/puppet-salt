@@ -1,5 +1,5 @@
 name 'aboe-salt'
-version '0.0.7'
+version '0.0.8'
 author 'aboe'
 license 'Apache License, Version 2.0'
 source 'git://github.com/aboe76/puppet-salt.git'
