@@ -2,6 +2,7 @@
 class salt::params {
   case $::osfamily {
     'redhat'    : {
+      $minion_config_manage = true
       $minion_config = '/etc/salt/minion'
       $minion_config_template = 'salt/minion.erb'
       $minion_package_name = 'salt-minion'
@@ -11,6 +12,7 @@ class salt::params {
       $minion_service_manage = true
       $minion_service_enable = true
 
+      $master_config_manage = true
       $master_config = '/etc/salt/master'
       $master_config_template = 'salt/master.erb'
       $master_package_name = 'salt-master'
@@ -22,6 +24,7 @@ class salt::params {
 
     }
     'archlinux' : {
+      $minion_config_manage = true
       $minion_config = '/etc/salt/minion'
       $minion_config_template = 'salt/minion.erb'
       $minion_package_name = 'salt'
@@ -31,6 +34,7 @@ class salt::params {
       $minion_service_manage = true
       $minion_service_enable = true
 
+      $master_config_manage = true
       $master_config = '/etc/salt/master'
       $master_config_template = 'salt/master.erb'
       $master_package_name = 'salt'
@@ -41,6 +45,7 @@ class salt::params {
       $master_service_enable = true
     }
     'suse'      : {
+      $minion_config_manage = true
       $minion_config = '/etc/salt/minion'
       $minion_config_template = 'salt/minion.erb'
       $minion_package_name = 'salt-minion'
@@ -50,6 +55,7 @@ class salt::params {
       $minion_service_manage = true
       $minion_service_enable = true
 
+      $master_config_manage = true
       $master_config = '/etc/salt/master'
       $master_config_template = 'salt/master.erb'
       $master_package_name = 'salt-master'
@@ -60,6 +66,7 @@ class salt::params {
       $master_service_enable = true
     }
     'debian'    : {
+      $minion_config_manage = true
       $minion_config = '/etc/salt/minion'
       $minion_config_template = 'salt/minion.erb'
       $minion_package_name = 'salt-minion'
@@ -69,6 +76,7 @@ class salt::params {
       $minion_service_manage = true
       $minion_service_enable = true
 
+      $master_config_manage = true
       $master_config = '/etc/salt/master'
       $master_config_template = 'salt/master.erb'
       $master_package_name = 'salt-master'

@@ -3,6 +3,7 @@
 # class { 'salt::minion': }
 #
 class salt::minion (
+  $minion_config_manage   = $salt::params::minion_config_manage,
   $minion_config          = $salt::params::minion_config,
   $minion_config_template = $salt::params::minion_config_template,
   $minion_package_ensure  = $salt::params::minion_package_ensure,

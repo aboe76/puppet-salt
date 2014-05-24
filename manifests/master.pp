@@ -3,6 +3,7 @@
 # class { 'salt::master': }
 #
 class salt::master (
+  $master_config_manage         = $salt::params::master_config_manage,
   $master_config                = $salt::params::master_config,
   $master_config_template       = $salt::params::master_config_template,
   $master_package_ensure        = $salt::params::master_package_ensure,

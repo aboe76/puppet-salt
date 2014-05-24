@@ -1,5 +1,6 @@
 # this class is used to configure the salt minion config file
 class salt::minion::config (
+  $minion_config_manage            = $salt::minion::minion_config_manage,
   $minion_config    = $salt::minion::minion_config,
   $minion_template  = $salt::minion::minion_config_template,
   $minion_master    = $salt::minion::minion_master,
@@ -60,7 +61,7 @@ inherits salt::minion {
     group   => 0,
     mode    => '0664',
     content => template($minion_template),
-    replace => false,
+    replace => $minion_config_manage,
   }
 
   # todo template the yaml parts in config file

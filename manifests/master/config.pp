@@ -1,5 +1,6 @@
 # this class is used to configure the salt master config file
 class salt::master::config (
+  $master_config_manage         = $salt::master::master_config_manage,
   $master_config                = $salt::master::master_config,
   $master_template              = $salt::master::master_config_template,
   $master_interface             = $salt::master::master_interface,
@@ -52,7 +53,7 @@ inherits salt::master {
     group   => 0,
     mode    => '0664',
     content => template($master_template),
-    replace => false,
+    replace => $master_config_manage,
   }
 
   # todo template the yaml parts in config file
