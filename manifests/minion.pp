@@ -58,7 +58,7 @@ class salt::minion (
   $minion_log_level       = $salt::params::minion_log_level,
   $minion_log_level_logfile        = $salt::params::minion_log_level_logfile,
   # minion file server settings
-  $minion_hash_type = $salt::params::minion_hash_type,
+  $minion_hash_type       = $salt::params::minion_hash_type,
   # minion keepalive settings
   $minion_tcp_keepalive   = $salt::params::minion_tcp_keepalive,
   $minion_tcp_keepalive_idle       = $salt::params::minion_tcp_keepalive_idle,
