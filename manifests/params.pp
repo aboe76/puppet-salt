@@ -189,7 +189,9 @@ class salt::params {
 
   # minion thread settings
   $minion_multiprocessing = true
-
+  
+  # File Directory Settings
+  $minion_hash_type = md5
   # minion logging settings
   $minion_log_file = '/var/log/salt/minion'
   $minion_key_logfile = '/var/log/salt/key'
