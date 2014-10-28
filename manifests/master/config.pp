@@ -23,6 +23,7 @@ class salt::master::config (
   $master_sock_dir              = $salt::master::master_sock_dir,
   $master_job_cache             = $salt::master::master_job_cache,
   $master_minion_data_cache     = $salt::master::master_minion_data_cache,
+  $master_show_timeout          = $salt::master::master_show_timeout,
   # master security:
   $master_open_mode             = $salt::master::master_open_mode,
   $master_auto_accept           = $salt::master::master_auto_accept,

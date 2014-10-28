@@ -117,6 +117,7 @@ class salt::params {
   $master_sock_dir = '/var/run/salt/master'
   $master_job_cache = true
   $master_minion_data_cache = true
+  $master_show_timeout = false
 
   # master security:
   $master_open_mode = false
