@@ -83,6 +83,9 @@ loop_interval: <%= @master_loop_interval %>
 # Set the default outputter used by the salt command. The default is "nested"
 output: <%= @master_output %>
 
+# Return minions that timeout when running commands like test.ping
+show_timeout: <%= @master_show_timeout %>
+
 # By default output is colored, to disable colored output set the color value
 # to False
 color: <%= @master_color %>
