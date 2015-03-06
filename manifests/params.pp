@@ -202,6 +202,7 @@ class salt::params {
   $minion_tcp_pull_port = 4511
   $minion_max_event_size = 1048576
   $minion_master_alive_interval = 0
+  $minion_startup_states = undef
 
   # minion module management
   $minion_cython_enable = false

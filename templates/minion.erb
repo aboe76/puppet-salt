@@ -372,7 +372,11 @@ state_top: <%= @minion_state_top %>
 # 'highstate' -- Execute state.highstate
 # 'sls' -- Read in the sls_list option and execute the named sls files
 # 'top' -- Read top_file option and execute based on that file on the Master
+<% if @minion_startup_states %>
+startup_states: <%= @minion_startup_states %>
+<% else %>
 #startup_states: ''
+<% end %>
 #
 # List of states to run when the minion starts up if startup_states is 'sls':
 #sls_list:

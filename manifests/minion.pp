@@ -63,6 +63,7 @@ class salt::minion (
   $salt::params::minion_clean_dynamic_modules,
   $minion_environment     = $salt::params::minion_environment,
   $minion_state_top       = $salt::params::minion_state_top,
+  $minion_startup_states  = $salt::params::minion_startup_states,
   # minion security settings
   $minion_open_mode       = $salt::params::minion_open_mode,
   $minion_permissive_pki_access    =
