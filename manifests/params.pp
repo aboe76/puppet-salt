@@ -165,9 +165,11 @@ class salt::params {
   ###############################################
   $minion_master = 'salt'
   $minion_random_master = false
+  $minion_master_type = 'str'
   $minion_ipv6 = false
   $minion_retry_dns = 30
   $minion_master_port = $master_ret_port
+  $minion_sudo_user = undef
   $minion_user = 'root'
   $minion_pidfile = '/var/run/salt-minion.pid'
   $minion_root_dir = '/'
@@ -236,11 +238,11 @@ class salt::params {
   $minion_key_logfile = '/var/log/salt/key'
   $minion_log_level = 'warning'
   $minion_log_level_logfile = 'warning'
+  $minion_zmq_monitor = false
 
   # minion keepalive settings
   $minion_tcp_keepalive = true
   $minion_tcp_keepalive_idle = 300
   $minion_tcp_keepalive_cnt = '-1'
   $minion_tcp_keepalive_intvl = '-1'
-
 }
