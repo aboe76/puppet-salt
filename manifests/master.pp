@@ -78,7 +78,7 @@ class salt::master (
   # master returners
   $master_returners             = $salt::params::master_returners,
   #master api configuration
-  $master_api_config            = $salt::params::master_api_config, 
+  $master_api_config            = $salt::params::master_api_config,
 )
 inherits salt::params {
   include 'salt::master::install'
