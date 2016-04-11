@@ -210,30 +210,49 @@ permissive_pki_access: <%= @master_permissive_pki_access %>
 # This setting should be treated with care since it opens up execution
 # capabilities to non root users. By default this capability is completely
 # disabled.
+<% if not @master_client_acl -%>
 #client_acl:
 #  larry:
 #    - test.ping
 #    - network.*
+<% else -%>
+client_acl:
+<%= @master_client_acl.to_yaml[5..-1] %>
+<% end -%>
 
 # Blacklist any of the following users or modules
 #
 # This example would blacklist all non sudo users, including root from
 # running any commands. It would also blacklist any use of the "cmd"
 # module. This is completely disabled by default.
-#
+<% if not @master_client_acl_blacklist -%>
 #client_acl_blacklist:
 #  users:
 #    - root
 #    - '^(?!sudo_).*$'   #  all non sudo users
 #  modules:
 #    - cmd
+<% else -%>
+client_acl_blacklist:
+<%= @master_client_acl_blacklist.to_yaml[5..-1] %>
+<% end -%>
+
+<%require 'yaml'
+if @master_auth_ldap -%>
+<%= @master_auth_ldap.to_yaml[5..-1].gsub(/^  /, '') %>
+<% end -%>
 
 # The external auth system uses the Salt auth modules to authenticate and
 # validate users to access areas of the Salt system.
+<% if not @master_external_auth -%>
 #external_auth:
 #  pam:
 #    fred:
 #      - test.*
+<% else -%>
+external_auth:
+<%= @master_external_auth.to_yaml[5..-1] %>
+<% end -%>
 
 # Time (in seconds) for a newly generated token to live. Default: 12 hours
 token_expire: <%= @master_token_expire %>
@@ -625,9 +644,14 @@ log_level_logfile: <%= @master_log_level_logfile %>
 ##########################################
 # Node groups allow for logical groupings of minion nodes. A group consists of a group
 # name and a compound target.
+<% if not @master_nodegroups -%>
 #nodegroups:
 #  group1: 'L@foo.domain.com,bar.domain.com,baz.domain.com and bl*.domain.com'
 #  group2: 'G@os:Debian and foo.domain.com'
+<% else -%>
+nodegroups:
+<%= @master_nodegroups.to_yaml[5..-1] %>
+<% end -%>
 
 
 #####     Range Cluster settings     #####
@@ -649,3 +673,16 @@ log_level_logfile: <%= @master_log_level_logfile %>
 # List of git repositories to include with the local repo:
 #win_gitrepos:
 #  - 'https://github.com/saltstack/salt-winrepo.git'
+
+<% if @master_api_config -%>
+#####     API configuration              #####
+##############################################
+<%= @master_api_config.to_yaml[5..-1].gsub(/^  /, '') %>
+<% end -%>
+
+<% if @master_returners -%>
+#####     Returner Configuration         #####
+##############################################
+<%= @master_returners.to_yaml[5..-1].gsub(/^  /, '') %>
+<% end -%>
+

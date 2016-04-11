@@ -132,6 +132,10 @@ class salt::params {
   $master_autosign_file = '/etc/salt/autosign.conf'
   $master_autoreject_file = '/etc/salt/autoreject.conf'
   $master_permissive_pki_access = false
+  $master_client_acl = undef
+  $master_client_acl_blacklist = undef
+  $master_auth_ldap = undef
+  $master_external_auth = undef
   $master_token_expire = 43200
   $master_file_recv = false
   $master_file_recv_max_size = 100
@@ -159,6 +163,15 @@ class salt::params {
   $master_key_logfile = '/var/log/salt/key'
   $master_log_level = 'warning'
   $master_log_level_logfile = 'warning'
+
+  # master node groups
+  $master_nodegroups = undef
+
+  # master returners
+  $master_returners = undef
+
+  #master api configuration
+  $master_api_config = undef
 
   ###############################################
   # minion defaults
