@@ -46,6 +46,10 @@ class salt::master (
   $master_autosign_file         = $salt::params::master_autosign_file,
   $master_autoreject_file       = $salt::params::master_autoreject_file,
   $master_permissive_pki_access = $salt::params::master_permissive_pki_access,
+  $master_client_acl            = $salt::params::master_client_acl,
+  $master_client_acl_blacklist  = $salt::params::master_client_acl_blacklist,
+  $master_auth_ldap             = $salt::params::master_auth_ldap,
+  $master_external_auth         = $salt::params::master_external_auth,
   $master_token_expire          = $salt::params::master_token_expire,
   $master_file_recv             = $salt::params::master_file_recv,
   $master_file_recv_max_size    = $salt::params::master_file_recv_max_size,
@@ -68,7 +72,14 @@ class salt::master (
   $master_log_file              = $salt::params::master_log_file,
   $master_key_logfile           = $salt::params::master_key_logfile,
   $master_log_level             = $salt::params::master_log_level,
-  $master_log_level_logfile     = $salt::params::master_log_level_logfile,)
+  $master_log_level_logfile     = $salt::params::master_log_level_logfile,
+  # master nodegroups
+  $master_nodegroups            = $salt::params::master_nodegroups,
+  # master returners
+  $master_returners             = $salt::params::master_returners,
+  #master api configuration
+  $master_api_config            = $salt::params::master_api_config,
+)
 inherits salt::params {
   include 'salt::master::install'
   include 'salt::master::config'

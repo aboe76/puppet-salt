@@ -132,6 +132,10 @@ class salt::params {
   $master_autosign_file = '/etc/salt/autosign.conf'
   $master_autoreject_file = '/etc/salt/autoreject.conf'
   $master_permissive_pki_access = false
+  $master_client_acl = undef
+  $master_client_acl_blacklist = undef
+  $master_auth_ldap = undef
+  $master_external_auth = undef
   $master_token_expire = 43200
   $master_file_recv = false
   $master_file_recv_max_size = 100
@@ -160,14 +164,25 @@ class salt::params {
   $master_log_level = 'warning'
   $master_log_level_logfile = 'warning'
 
+  # master node groups
+  $master_nodegroups = undef
+
+  # master returners
+  $master_returners = undef
+
+  #master api configuration
+  $master_api_config = undef
+
   ###############################################
   # minion defaults
   ###############################################
   $minion_master = 'salt'
   $minion_random_master = false
+  $minion_master_type = 'str'
   $minion_ipv6 = false
   $minion_retry_dns = 30
   $minion_master_port = $master_ret_port
+  $minion_sudo_user = undef
   $minion_user = 'root'
   $minion_pidfile = '/var/run/salt-minion.pid'
   $minion_root_dir = '/'
@@ -236,11 +251,11 @@ class salt::params {
   $minion_key_logfile = '/var/log/salt/key'
   $minion_log_level = 'warning'
   $minion_log_level_logfile = 'warning'
+  $minion_zmq_monitor = false
 
   # minion keepalive settings
   $minion_tcp_keepalive = true
   $minion_tcp_keepalive_idle = 300
   $minion_tcp_keepalive_cnt = '-1'
   $minion_tcp_keepalive_intvl = '-1'
-
 }
