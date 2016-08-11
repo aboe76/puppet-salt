@@ -15,7 +15,7 @@
 # resolved, then the minion will fail to start.
 <% if @minion_master.kind_of?(Array) -%>
 master:
-<% minion_master.each do |mstr|  -%>
+<% @minion_master.each do |mstr|  -%>
   - <%= mstr %>
 <% end -%>
 <% else -%>
