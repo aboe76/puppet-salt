@@ -498,6 +498,9 @@ state_output_diff: <%= @minion_state_output_diff %>
 # salt master.
 master_finger: <%= @minion_master_finger %>
 
+# Enables verification of the master-public-signature returned by the master
+# in auth-replies.
+verify_master_pubkey_sign: <%= @minion_verify_master_pubkey_sign %>
 
 ######         Thread settings        #####
 ###########################################
