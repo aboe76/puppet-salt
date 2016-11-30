@@ -73,6 +73,7 @@ class salt::minion (
   $minion_state_verbose   = $salt::params::minion_state_verbose,
   $minion_state_output    = $salt::params::minion_state_output,
   $minion_master_finger   = $salt::params::minion_master_finger,
+  $minion_verify_master_pubkey_sign  = $salt::params::minion_verify_master_pubkey_sign,
   # minion thread settings
   $minion_multiprocessing = $salt::params::minion_multiprocessing,
   # minion logging settings
