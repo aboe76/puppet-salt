@@ -209,6 +209,7 @@ class salt::params {
   $minion_recon_randomize = true
   $minion_loop_interval = 60
   $minion_dns_check = true
+  $minion_grains = undef
   $minion_grains_refresh_every = 0
   $minion_grains_cache = false
   $minion_grains_cache_expiration = 300

@@ -96,6 +96,9 @@ append_domain: <%= @minion_append_domain %>
 # Custom static grains for this minion can be specified here and used in SLS
 # files just like all other grains. This example sets 4 custom grains, with
 # the 'roles' grain having two values that can be matched against.
+<% if @minion_grains -%>
+<%= minion_grains_yaml = {'grains' => @minion_grains }.to_yaml[4..-1]; %>
+<% else -%>
 #grains:
 #  roles:
 #    - webserver
@@ -103,6 +106,7 @@ append_domain: <%= @minion_append_domain %>
 #  deployment: datacenter4
 #  cabinet: 13
 #  cab_u: 14-15
+<% end -%>
 
 # Where cache data goes.
 cachedir: <%= @minion_cachedir %>
