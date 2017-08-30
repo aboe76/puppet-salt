@@ -45,6 +45,7 @@ class salt::minion (
   $minion_recon_randomize = $salt::params::minion_recon_randomize,
   $minion_loop_interval   = $salt::params::minion_loop_interval,
   $minion_dns_check       = $salt::params::minion_dns_check,
+  $minion_grains                   = $salt::params::minion_grains,
   $minion_grains_refresh_every     = $salt::params::minion_grains_refresh_every,
   $minion_grains_cache    = $salt::params::minion_grains_cache,
   $minion_grains_cache_expiration  = $salt::params::minion_grains_cache_expiration,
