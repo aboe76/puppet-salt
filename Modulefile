@@ -8,4 +8,4 @@ summary 'Module to manage a salt installation server/client'
 description 'Module to manage a salt installation server/client'
 
 ## Add dependencies, if any:
-dependency 'puppetlabs/stdlib', '>= 4.13.1 < 5.0.0'
+dependency 'puppetlabs/stdlib', '>= 4.13.1 < 6.0.0'
